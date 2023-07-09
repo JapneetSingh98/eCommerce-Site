@@ -5,3 +5,18 @@
 .navbar-style {
     background-color: rgb(26, 173, 143)!important;
 }
+
+.green-highlight {
+    color: green!important;
+    font-size: 40px;
+}
+
+.orange-highlight {
+    color: orange!important;
+    font-size: 30px;
+}
+
+.red-highlight {
+    color: red!important;
+    font-size: 40px;
+}

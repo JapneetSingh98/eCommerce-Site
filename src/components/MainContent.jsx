@@ -11,6 +11,7 @@ export default function MainContent(props) {
                 name: "Scott",
                 phone: "123-456",
                 address: { city: "New York" },
+                photoSrc: "https://picsum.photos/id/1010/30",
             },
             {
                 key: 2,
@@ -18,6 +19,7 @@ export default function MainContent(props) {
                 name: "Smith",
                 phone: null,
                 address: { city: "London" },
+                photoSrc: "https://picsum.photos/id/1011/30",
             },
             {
                 key: 3,
@@ -25,6 +27,7 @@ export default function MainContent(props) {
                 name: "Kevin",
                 phone: "123-456",
                 address: { city: "San Francisco" },
+                photoSrc: "https://picsum.photos/id/1012/30",
             },
             {
                 key: 4,
@@ -32,6 +35,7 @@ export default function MainContent(props) {
                 name: "Linda",
                 phone: "123-456",
                 address: { city: "Paris" },
+                photoSrc: "https://picsum.photos/id/1013/30",
             },
             {
                 key: 5,
@@ -39,6 +43,7 @@ export default function MainContent(props) {
                 name: "Ben",
                 phone: null,
                 address: { city: "New York" },
+                photoSrc: "https://picsum.photos/id/1014/30",
             },
         ],
     });
@@ -68,13 +73,30 @@ export default function MainContent(props) {
                 <React.Fragment key={customer.key}>
                     <tr>
                         <th scope="row">{customer.id}</th>
-                        <td>{customer.name}</td>
+                        <td className={customerNameStyle(customer.name)}>
+                            <img
+                                src={customer.photoSrc}
+                                alt={customer.name + "'s photo"}
+                                className="pe-2"
+                            />
+                            {customer.name}
+                        </td>
                         <td>{getPhoneToRender(customer.phone)}</td>
                         <td>{customer.address.city}</td>
                     </tr>
                 </React.Fragment>
             );
         });
+    }
+
+    function customerNameStyle(name) {
+        if (name.startsWith("S")) {
+            return "green-highlight";
+        } else if (name.startsWith("B")) {
+            return "orange-highlight";
+        } else {
+            return {};
+        }
     }
 
     return (
