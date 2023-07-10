@@ -13,12 +13,34 @@ export default function ShoppingCart(props) {
         ],
     });
 
-    function handleIncrement(product) {
-        console.log(product);
+    function handleIncrement(product, maxQuantity) {
+        let allProducts = [...productsState.products];
+        let indexOfProduct = allProducts.indexOf(product);
+
+        if (allProducts[indexOfProduct].quantity < maxQuantity) {
+            allProducts[indexOfProduct].quantity++;
+
+            setProductsState(() => {
+                return {
+                    products: allProducts,
+                };
+            });
+        }
     }
 
-    function handleDecrement(product) {
-        console.log(product);
+    function handleDecrement(product, minQuantity) {
+        let allProducts = [...productsState.products];
+        let indexOfProduct = allProducts.indexOf(product);
+
+        if (allProducts[indexOfProduct].quantity > minQuantity) {
+            allProducts[indexOfProduct].quantity--;
+
+            setProductsState(() => {
+                return {
+                    products: allProducts,
+                };
+            });
+        }
     }
 
     return (

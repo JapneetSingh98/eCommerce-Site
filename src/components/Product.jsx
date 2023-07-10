@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 
 export default function Product(props) {
-    const [product, setProduct] = useState({
-        id: props.product.id,
-        productName: props.product.productName,
-        price: props.product.price,
-        quantity: props.product.quantity,
-    });
+    const minQuantity = 0;
+    const maxQuantity = 10;
+    const [product, setProduct] = useState(props.product);
 
     return (
         <React.Fragment>
@@ -27,13 +24,17 @@ export default function Product(props) {
                             <div className="btn-group">
                                 <button
                                     className="btn btn-outline-success"
-                                    onClick={() => props.onDecrement(props.product)}
+                                    type="button"
+                                    disabled={product.quantity <= minQuantity}
+                                    onClick={() => props.onDecrement(props.product, minQuantity)}
                                 >
                                     -
                                 </button>
                                 <button
                                     className="btn btn-outline-success"
-                                    onClick={() => props.onIncrement(props.product)}
+                                    type="button"
+                                    disabled={product.quantity >= maxQuantity}
+                                    onClick={() => props.onIncrement(props.product, maxQuantity)}
                                 >
                                     +
                                 </button>

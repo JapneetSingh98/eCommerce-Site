@@ -9,7 +9,7 @@ export default function App() {
     return (
         <React.Fragment>
             <NavBar />
-            <MainContent />
+            {/* <MainContent /> */}
             <ShoppingCart />
         </React.Fragment>
     );
